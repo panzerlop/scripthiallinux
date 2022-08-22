@@ -16,6 +16,6 @@ Broken:
 * git clone https://github.com/panzerlop/scripthiallinux
 * cd scripthiallinux
 * open csgo
-* [LINUX] sudo python3 scripthial_linux.py
+* sudo python3 scripthial_linux.py
 
 
