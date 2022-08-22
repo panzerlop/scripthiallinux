@@ -2,15 +2,15 @@
 
 # features
 * external rcs
-* external interfaces
-* external netvars
-* external convars
+* external interfaces ?
+* external netvars ? 
+* external convars ?
 
 Broken:
 
-//* external glow
-//* external aimbot
-//* external triggerbot
+//* external glow !! 
+//* external aimbot !!
+//* external triggerbot !! - HELP!
 
 # usage
 * git clone https://github.com/panzerlop/scripthiallinux
