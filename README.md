@@ -1,4 +1,4 @@
-# Please host your game with -intrusted to test this, don't ruin others games (: 
+# Please host your game with -untrusted to test this, don't ruin others games (: 
 
 # features
 * external rcs
