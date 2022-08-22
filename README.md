@@ -8,9 +8,10 @@
 
 Broken:
 
-//* external glow !! 
-//* external aimbot !!
 //* external triggerbot !! - HELP!
+//* external glow !! meh
+//* external aimbot !! ?
+
 
 # usage
 * git clone https://github.com/panzerlop/scripthiallinux
