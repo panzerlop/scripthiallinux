@@ -10,7 +10,6 @@ Broken:
 
 //* external triggerbot !! - HELP!
 //* external glow !! meh
-//* external aimbot !! ?
 
 
 # usage
