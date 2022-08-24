@@ -651,6 +651,7 @@ if __name__ == "__main__":
     print("    m_dwBoneMatrix:     " + hex(nv.m_dwBoneMatrix))
     print("[*]Info")
     print("    Creator:            OP: github.com/ekknod")
+    print("    My Fork:            https://github.com/panzerlop/scripthiallinux
     print("    Only RCS working")
     print("    updated on 22/08 - syntax - redundant code - now Python3")
     while mem.exists() and not InputSystem.is_button_down(g_exit_key):
