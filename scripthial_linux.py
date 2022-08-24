@@ -8,8 +8,16 @@ libc = CDLL("libc.so.6")
 
 g_horizontal_only = False
 
+g_horizontal_only = False
 g_rcs = True
-g_exit_key = 103
+g_aimbot = False
+g_aimbot_rcs = False
+g_aimbot_head = False
+g_aimbot_fov = 2.0 / 180.0
+g_aimbot_smooth = 4.5
+g_aimbot_key = 107
+g_triggerbot_key = 111
+g_exit_key = 72
 
 g_old_punch = 0
 g_previous_tick = 0
@@ -456,6 +464,9 @@ class Player:
         health = self.get_health()
         return self.address != 0 and self.get_life_state() == 0 and 0 < health < 1338
 
+    def get_shots_fired(self):
+        return mem.read_i32(self.address + nv.m_iShotsFired)
+
 
 class Engine:
     @staticmethod
@@ -662,23 +673,23 @@ if __name__ == "__main__":
                 fl_sensitivity = _sensitivity.get_float()
                 view_angle = Engine.get_view_angles()
 
+                if InputSystem.is_button_down(g_triggerbot_key) and get_crosshair_target(self):
+                    mouse.click()
+                if g_aimbot and ( InputSystem.is_button_down(g_aimbot_key) or InputSystem.is_button_down(g_triggerbot_key) ):
+                    g_current_tick = self.get_tick_count()
+                    if not _target.is_valid() and not get_best_target(view_angle, self):
+                        continue
+                    aim_at_target(fl_sensitivity, view_angle, get_target_angle(self, _target, _target_bone))
+                else:
+                    target_set(Player(0))
                 if g_rcs:
                     current_punch = self.get_vec_punch()
                     if self.get_shots_fired() > 1:
-                        new_punch = Vector3(
-                            current_punch.x - g_old_punch.x,
-                            current_punch.y - g_old_punch.y,
-                            0,
-                        )
-                        new_angle = Vector3(
-                            view_angle.x - new_punch.x * 2.0,
-                            view_angle.y - new_punch.y * 2.0,
-                            0,
-                        )
-                        mouse.move(
-                            int((new_angle.y - view_angle.y) / fl_sensitivity / -0.022),
-                            int((new_angle.x - view_angle.x) / fl_sensitivity / 0.022),
-                        )
+                        new_punch = Vector3(current_punch.x - g_old_punch.x,
+                                            current_punch.y - g_old_punch.y, 0)
+                        new_angle = Vector3(view_angle.x - new_punch.x * 2.0, view_angle.y - new_punch.y * 2.0, 0)
+                        mouse.move(int(((new_angle.y - view_angle.y) / fl_sensitivity) / -0.022),
+                                   int(((new_angle.x - view_angle.x) / fl_sensitivity) / 0.022))
                     g_old_punch = current_punch
             except ValueError:
                 continue
