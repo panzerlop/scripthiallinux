@@ -19,3 +19,4 @@ Broken:
 * sudo python3 scripthial_linux.py
 
 
+PROBLEM: setting a interger value for a keybind crashes script ( trigger )
